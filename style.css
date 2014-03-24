@@ -1,5 +1,11 @@
 body {
-	background-image: url('2.jpg');
+	background-image: url('images/2.jpg');
 	background-repeat: no-repeat;
 	background-size: 100%;
+}
+
+#homeNav {
+	text-align: center;
+	font-size: 60px;
+	margin-top: 300px;
 }
