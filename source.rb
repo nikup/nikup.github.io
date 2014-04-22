@@ -1,5 +1,5 @@
 # encoding: utf-8
-File.write "index.html", File.read("indexTemplate.html")
+File.write "index.html", File.read("templates/indexTemplate.html")
 
 information = {
 title: "About me",
@@ -15,11 +15,11 @@ title: "За мен",
 home: "Начало",
 name: "Николина Гюрова",
 text: "Къде да ме намерите?",
-navigation: "<a href=\"../en/index.html\">English version</a> |
+navigation: "<a href=\"../en/index.html\">English version</a> | 
 			Българска версия"
 }
 
-common_index = File.read "template.html"
+common_index = File.read "templates/template.html"
 
 translations = {
 	"en" => information,
