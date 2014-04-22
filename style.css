@@ -22,13 +22,13 @@ a {
 main {
 	margin-left:auto;
 	margin-right:auto;
-	width: 300px;
+	width: 350px;
 	display: block;
 }
 
 img {
 	height: 60px;
-	width: : 60px;
+	width: 60px;
 	float: left;
 }
 

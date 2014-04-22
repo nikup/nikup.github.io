@@ -55,7 +55,7 @@ common_index = "<!DOCTYPE html>
 				</a>
 			</li>
 			<li>
-				<a href=\"http://facebook.com\">
+				<a href=\"https://www.facebook.com/whydidyouchangemyefinemail\">
 					<img src=\"../images/facebook.png\">Facebook
 				</a>
 			</li>
@@ -75,7 +75,7 @@ common_index = "<!DOCTYPE html>
 				</a>
 			</li>
 			<li>
-				<a href=\"http://linkedin.com/\">
+				<a href=\"bg.linkedin.com/in/ngyurova/\">
 					<img src=\"../images/linkedin.png\">LinkedIn
 				</a>
 			</li>
