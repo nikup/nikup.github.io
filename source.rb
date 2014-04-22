@@ -14,32 +14,35 @@ source = "<!DOCTYPE html>
 </html>"
 
 File.write "index.html", source
+information = {
+title: "About me",
+name: "Nikolina Gyurova",
+text: "Find me",
+navigation: "English version |
+			<a href=\"../bg/index.html\">Българска версия</a>",
+home: "Home"
+}
 
-title = "About me"
-name = "Nikolina Gyurova"
-text = "Find me"
-navigation = "English version |
-			<a href=\"../bg/index.html\">Българска версия</a>"
-home = "Home"
-
-title_bg = "За мен"
-home_bg = "Начало"
-name_bg = "Николина Гюрова"
-text_bg = "Къде да ме намерите?"
-navigation_bg = "<a href=\"../en/index.html\">English version</a> |
+information_bg = {
+title: "За мен",
+home: "Начало",
+name: "Николина Гюрова",
+text: "Къде да ме намерите?",
+navigation: "<a href=\"../en/index.html\">English version</a> |
 			Българска версия"
+}
 
 common_index = "<!DOCTYPE html>
 <html>
 <head>
-	<title> %s </title>
+	<title> %{title} </title>
 	<link href=\"../style.css\" rel=\"stylesheet\">
 </head>
 <body>
-	<a href=\"../index.html\"> %s </a>
+	<a href=\"../index.html\"> %{home} </a>
 	<main>
-		<h1> %s </h1>
-		<p> %s</p>
+		<h1> %{name} </h1>
+		<p> %{text}</p>
 		<ul>
 			<li>
 				<a href=\"https://github.com/nikup\">
@@ -80,11 +83,17 @@ common_index = "<!DOCTYPE html>
 		</ul>
 
 		<nav> 
-		%s 
+		%{navigation}
 		</nav>
 	</main>
 </body>
 </html>"
 
-File.write "en//index.html", sprintf(common_index, title, home, name, text, navigation)
-File.write "bg//index.html", sprintf(common_index, title_bg, home_bg, name_bg, text_bg, navigation_bg)
+translations = {
+	"en" => information,
+	"bg" => information_bg
+}
+
+translations.each do |lang, info|
+	File.write "#{lang}//index.html", common_index % info
+end
