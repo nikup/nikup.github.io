@@ -9,8 +9,8 @@ File.write "index.html", File.read("templates/indexTemplate.html")
 common_index = open('templates/template.erb', 'r') {|f| f.read}
 
 translations = {
-	"en" => OpenStruct.new(YAML::load( File.read('translations/en.yaml'))),
-	"bg" => OpenStruct.new(YAML::load( File.read('translations/bg.yaml')))
+	"en" => OpenStruct.new(YAML.load_file('translations/en.yaml')),
+	"bg" => OpenStruct.new(YAML.load_file('translations/bg.yaml'))
 }
 
 translations.each do |lang, info|
