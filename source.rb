@@ -6,7 +6,7 @@ require 'yaml'
 
 File.write "index.html", File.read("templates/indexTemplate.html")
 
-common_index = open('templates/template.erb', 'r') {|f| f.read}
+common_index = File.read('templates/template.erb')
 
 translations = {
 	"en" => OpenStruct.new(YAML.load_file('translations/en.yaml')),
