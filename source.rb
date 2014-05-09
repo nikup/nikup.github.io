@@ -2,32 +2,15 @@
 
 require 'erb'
 require 'ostruct'
+require 'yaml'
 
 File.write "index.html", File.read("templates/indexTemplate.html")
-
-information = OpenStruct.new({
-title: "About me",
-name: "Nikolina Gyurova",
-text: "Find me",
-navigation: "English version |
-			<a href=\"../bg/index.html\">Българска версия</a>",
-home: "Home"
-})
-
-information_bg = OpenStruct.new({
-title: "За мен",
-home: "Начало",
-name: "Николина Гюрова",
-text: "Къде да ме намерите?",
-navigation: "<a href=\"../en/index.html\">English version</a> | 
-			Българска версия"
-})
 
 common_index = open('templates/template.erb', 'r') {|f| f.read}
 
 translations = {
-	"en" => information,
-	"bg" => information_bg
+	"en" => OpenStruct.new(YAML::load( File.read('translations/en.yaml'))),
+	"bg" => OpenStruct.new(YAML::load( File.read('translations/bg.yaml')))
 }
 
 translations.each do |lang, info|
