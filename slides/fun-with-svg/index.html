@@ -4,10 +4,9 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Програмиране за графични ускорители</title>
+    <title>Fun with SVG</title>
 
-    <meta name="description" content="Слайдове за уводна лекция в програмирането за ускорители">
-    <meta name="author" content="Борислав Станимиров">
+    <meta name="author" content="Николина Гюрова">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -71,6 +70,16 @@
               </svg>
             </section>
 
+            <section class="slide">
+              <h3><code>-webkit-background-clip: text?</code></h3>
+              
+              <ul>
+                <li class="fragment">не, нещо по-готино</li>
+                <li class="fragment">работи на всички браузъри</li>
+                <li class="fragment">wait for it </li>
+              </ul>
+            </section>
+
             <section class="inter" data-background-image="media/bg.jpg">
                 <h2>Какво дори е SVG?</h2>
             </section>
@@ -79,19 +88,23 @@
                 <div class="container">
 
                 <div class="col">
-                    <h3>&lt;html&gt;</h3>
-                    <p>&lt;div&gt;</p>
-                    <p>&lt;span&gt;</p>
-                    <p>&lt;h1&gt;</p>
-                    <p>&lt;article&gt;</p>
+                    <h3 class="fragment">&lt;html&gt;</h3>
+                    <div class="fragment">
+                      <p>&lt;div&gt;</p>
+                      <p>&lt;span&gt;</p>
+                      <p>&lt;h1&gt;</p>
+                      <p>&lt;article&gt;</p>
+                    </div>
                 </div>
 
                 <div class="col">
                     <h3>&lt;svg&gt;</h3>
-                    <p>&lt;rect&gt;</p>
-                    <p>&lt;elipse&gt;</p>
-                    <p>&lt;polygon&gt;</p>
-                    <p>&lt;path&gt;</p>
+                    <div class="fragment">
+                      <p>&lt;rect&gt;</p>
+                      <p>&lt;elipse&gt;</p>
+                      <p>&lt;polygon&gt;</p>
+                      <p>&lt;path&gt;</p>
+                    </div>
                 </div>
 
                 </div>
@@ -118,7 +131,7 @@
   &lt;rect x="10" y="10" width="500" height="500"
         fill="yellow" stroke="blue" stroke-width="5" /&gt
                 </code></pre>
-                <svg width="500" height="500" viewBox="0 0 550 550">
+                <svg  class="fragment" width="500" height="500" viewBox="0 0 550 550">
                   <rect x="10" y="10" width="500" height="500" fill="yellow" stroke="blue" stroke-width="5"/>
                 </svg>
             </section>
@@ -169,7 +182,7 @@
     &lt;stop stop-color="goldenrod" offset="100%"/&gt
 &lt;/linearGradient&gt
                 </code></pre>
-                <svg viewBox="0 0 100 100">
+                <svg class="fragment" viewBox="0 0 100 100">
                   <defs>
                     <linearGradient id="linear" x1="0" x2="100%" y1="0" y2="100%">
                       <stop stop-color="hotpink" offset="0%"/>
@@ -190,10 +203,10 @@
 &lt;/defs&gt;
 </code></pre>
 
-                <pre><code>&lt;path fill="url(#fire)" d="M69.3,49.1c0.3,0.9,6.4-..."/&gt;
+                <pre class="fragment"><code>&lt;path fill="url(#fire)" d="M69.3,49.1c0.3,0.9,6.4-..."/&gt;
                 </code></pre>
 
-                <svg x="0px" y="0px" viewBox="0 10 100 100" enable-background="new 0 0 100 100" xml:space="preserve" height="500">
+                <svg class="fragment" x="0px" y="0px" viewBox="0 10 100 100" enable-background="new 0 0 100 100" xml:space="preserve" height="500">
                   <defs>
                     <linearGradient id="fire" x1="0" x2="100%" y1="0" y2="100%">
                       <stop stop-color="hotpink" offset="0%"/>
@@ -207,7 +220,7 @@
             <section class="slide">
                 <h3>Image fill / Pattern</h3>
 
-                <svg viewBox="0 0 100 100" width="500">
+                <svg class="fragment" viewBox="0 0 100 100" width="500">
                 <defs>
                   <pattern id="thor" width="100" height="100" patternUnits="userSpaceOnUse">
                     <image xlink:href="img/thor.jpg" width="100" height="100" preserveAspectRatio="xMidYMid slice">
@@ -240,9 +253,9 @@
             </section>
 
             <section class="slide">
-                <h3>Or GIF???</h3>
+                <h3>Или GIF???</h3>
 
-                <svg width="600" height="486.24px"
+                <svg class="fragment" width="600" height="486.24px"
                  viewBox="-99.979 -162.047 300 486.24" fill="url(#geordi)">
                 <defs>
                   <pattern id="geordi" patternUnits="userSpaceOnUse" width="800" height="600" x="-180" y="-162">
@@ -292,6 +305,111 @@
         font-size="29.5"&gt;frontier&lt;/text&gt;
 &lt;/svg&gt;
           </code></pre>
+            </section>
+
+            <section class="inter" data-background-image="media/bg.jpg">
+              <h2>Анимации!</h2>
+            </section>
+
+            <section class="inter" data-background-image="media/bg.jpg">
+              <iframe width="1000" height="1000" src="https://codepen.io/ngyurova/full/XqqWeo/"></iframe>
+            </section>
+
+            <section>
+              <pre><code>&lt;path stroke="black" stroke-width="2" stroke-dasharray="570"
+    stroke-dashoffset="570" d="M36.5,1.6c13.1,0..."&gt;
+  &lt;animate
+    attributeName="stroke-dashoffset"
+    dur="10"
+    values="0; 570"
+    repeatCount="indefinite"
+  /&gt;
+&lt;/path&gt;
+            </code></pre>
+
+            </section>
+
+            <section class="slide">
+              <h3>&lt;animate&gt;</h3>
+              <ul>
+                <li>може да се прилага върху повечето атрибути</li>
+                <li class="fragment">но има и друг начин :)</li>
+              </ul>
+            </section>
+
+            <section class="slide">
+              <h3>Спомняте ли си това?</h3>
+              <iframe width="1000" height="1000" src="https://codepen.io/ngyurova/full/wjyKEE/"></iframe>
+            </section>
+
+            <section>
+              <pre><code>&lt;svg class="lds-spin" viewBox="-10 -10 180 180" preserveAspectRatio="xMidYMid"&gt;
+    &lt;g class="pos-1"&gt;&lt;circle class="lds-circle" r="20"&gt;&lt;/circle&gt;&lt;/g&gt;
+    &lt;g class="pos-2"&gt;&lt;circle class="lds-circle" r="20"&gt;&lt;/circle&gt;&lt;/g&gt;
+    .
+    .
+&lt;/svg&gt;</code></pre>
+
+              <pre class="fragment"><code>@keyframes spin {
+  0% { opacity: 1; transform: scale(1.1, 1.1); }
+  100% { opacity: 0; transform: scale(1, 1); }
+}</code></pre>
+
+              <pre class="fragment"><code>.lds-spin .lds-circle {
+  fill: #93dbe9;
+  animation: spin 1s linear infinite;
+}
+
+              </code></pre>
+
+            </section>
+
+            <section class="inter" data-background-image="media/bg.jpg">
+              <h2>Филтър ефекти</h2>
+            </section>
+
+            <section>
+              <iframe width="1000" height="1000" src="https://codepen.io/ejsado/full/kmrtp"></iframe>
+            </section>
+
+            <section class="slide">
+              <h3>blur filter</h3>
+              <pre><code>&lt;filter id="blur"&gt;
+    &lt;feGaussianBlur stdDeviation="3" /&gt;
+    &lt;feComponentTransfer&gt;
+        &lt;feFuncR type="linear" slope="0.7"/&gt;
+        &lt;feFuncG type="linear" slope="0.7"/&gt;
+        &lt;feFuncB type="linear" slope="0.7"/&gt;
+    &lt;/feComponentTransfer&gt;
+&lt;/filter></code></pre>
+              <pre><code>section:before {
+    filter: url(#blur);
+}</code></pre>
+            </section>
+
+            <section data-background-image="media/bg.jpg">
+                <div class="fin">
+                <h3>"Thank you, thank you, you're far too kind"</h3>
+                <p>
+                    <br />
+                    <small>
+                    Тази презентация е тук: <a href="http://nikup.github.io/slides/fun-with-svg/">http://nikup.github.io/slides/fun-with-svg/</a>
+                    </small>
+                    <br />
+                    <small>Кодът ѝ е тук: <a href="https://github.com/nikup/nikup.github.io/tree/master/slides/fun-with-svg">https://github.com/nikup/nikup.github.io/</a>
+                    </small>
+                    <br />
+                    <small><a href="https://revealjs.com/#/">reveal.js</a> / <a href="https://highlightjs.org/">highlight.js</a> / <a href="https://codepen.io/">codepen.io</a></small>
+                    <br />
+                    <small>
+                    Сетъп и стилове задигнати от Борислав Станимиров / <a href="http://ibob.github.io">ibob.github.io</a>, чиято
+                    </small>
+                    <br />
+                    <small>
+                    презентацията е лицензирана с <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Признание 3.0</a><a rel="license" href="http://creativecommons.org/licenses/by/3.0/"></a>
+                    </small>
+                </p>
+                <div>
             </section>
 
         </div>
