@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="bg">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Програмиране за графични ускорители</title>
+
+    <meta name="description" content="Слайдове за уводна лекция в програмирането за ускорители">
+    <meta name="author" content="Борислав Станимиров">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="third_party/reveal/css/reveal.css">
+    <link rel="stylesheet" href="third_party/reveal/css/theme/simple.css" id="theme">
+
+    <link rel="stylesheet" href="custom.css">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="third_party/highlight-new/styles/github.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+    document.write( '<link rel="stylesheet" href="third_party/reveal/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+</head>
+
+<body>
+
+    <div class="reveal">
+        <div class="slides">
+
+            <section class="title" data-background-image="media/bg.jpg">
+                <div class="content">
+                    <img class="logo" src="media/logo.png" />
+                    <h1>Fun with <del>flags</del> SVG!</h1>
+                    <h2>Nikolina Gyurova</h2>
+                </div>
+            </section>
+
+            <section class="inter" data-background-image="media/bg.jpg">
+                <h1>I <svg viewBox="0 -4.831 100 100" width="120"><path fill="hotpink"
+              stroke="#fff" d="M98.2,17.305c-2.493-6.252-7.495-11.51-14.416-14.766C77.667-0.34,71.076-0.686,65.085,1.073  C59.096,2.832,53.71,7.626,50,13.168C46.291,7.626,40.905,2.832,34.916,1.073S22.334-0.34,16.217,2.539  C9.297,5.794,4.295,11.053,1.801,17.305c-2.493,6.252-2.504,13.511,0.638,20.73C9.161,53.477,49.787,89.719,50,90.338  c0.213-0.619,40.84-36.861,47.561-52.303C100.705,30.815,100.693,23.557,98.2,17.305z"/> </svg> html5 canvas</h1>
+            </section>
+
+            <section>
+              <style>
+                .hamilton-text {
+                  font-family: "Syncopate";
+                  text-transform: uppercase;
+                }
+
+                #hamilton {
+                    opacity: 0.8;
+                }
+              </style>
+              <svg viewBox="0 0 200 90" class="hamilton-text">
+                <defs>
+                  <pattern id="hamilton" patternUnits="userSpaceOnUse" width="200" height="90">
+                    <image xlink:href="img/hamilton.gif" width="200" height="90" preserveAspectRatio="xMidYMid slice"/>
+                  </pattern>
+                </defs>
+
+                <text fill="url(#hamilton)" class="line1" x="7" y="15" font-size="20">you want a</text>
+                <text fill="url(#hamilton)" class="line2" x="0" y="40" font-size="21">revolution?</text>
+                <text fill="url(#hamilton)" class="line3" x="35" y="65" font-size="20">i want a</text>
+                <text fill="url(#hamilton)" class="line3" x="0" y="88" font-size="24">revelation</text>
+              </svg>
+            </section>
+
+            <section class="inter" data-background-image="media/bg.jpg">
+                <h2>Какво дори е SVG?</h2>
+            </section>
+
+            <section>
+                <div class="container">
+
+                <div class="col">
+                    <h3>&lt;html&gt;</h3>
+                    <p>&lt;div&gt;</p>
+                    <p>&lt;span&gt;</p>
+                    <p>&lt;h1&gt;</p>
+                    <p>&lt;article&gt;</p>
+                </div>
+
+                <div class="col">
+                    <h3>&lt;svg&gt;</h3>
+                    <p>&lt;rect&gt;</p>
+                    <p>&lt;elipse&gt;</p>
+                    <p>&lt;polygon&gt;</p>
+                    <p>&lt;path&gt;</p>
+                </div>
+
+                </div>
+            </section>
+
+            <section>
+                <h3>Основни форми</h3>
+                <img class="showcase" src="img/elements.png" />
+            </section>
+
+
+            <section>
+                <img class="showcase" src="img/beaker.png" />
+                <a href="https://codepen.io/benjoyce/pen/myqxad"> https://codepen.io/benjoyce/pen/myqxad</a>
+            </section>
+
+            <section>
+                <img class="showcase" src="img/beaker-anotated.png" />
+                <a href="https://codepen.io/benjoyce/pen/myqxad"> https://codepen.io/benjoyce/pen/myqxad</a>
+            </section>
+
+            <section class="slide">
+                <pre><code class="svg">
+  &lt;rect x="10" y="10" width="500" height="500"
+        fill="yellow" stroke="blue" stroke-width="5" /&gt
+                </code></pre>
+                <svg width="500" height="500" viewBox="0 0 550 550">
+                  <rect x="10" y="10" width="500" height="500" fill="yellow" stroke="blue" stroke-width="5"/>
+                </svg>
+            </section>
+
+            <section class="slide">
+                <pre><code class="svg">
+  &lt;circle cx="255" cy="255" r="250"
+        fill="yellow" stroke="blue" stroke-width="5" /&gt
+                </code></pre>
+                <svg width="500" height="500" viewBox="0 0 550 550">
+                  <circle cx="255" cy="255" r="250" fill="yellow" stroke="blue" stroke-width="5"/>
+                </svg>
+            </section>
+
+            <section class="slide">
+                <pre><code class="svg">
+  &lt;polygon points="27,229 139,77 342,452..."
+        fill="yellow" stroke="blue" stroke-width="5" /&gt
+                </code></pre>
+                <svg width="500" height="500" viewBox="0 0 550 550">
+                  <polygon points="27,229 139,77 342,452 345,102 89,391 83,10" fill="yellow" stroke="blue" stroke-width="5"/>
+                </svg>
+            </section>
+
+            <section class="slide">
+                <pre><code class="svg">
+  &lt;svg viewBox="-6 -6 112 112"&gt    
+    &lt;path d="M98.2,17.305c-2.493-6.252-7.495-11...
+        fill="hotpink" stroke="black" stroke-width="1" /&gt
+  &lt;/svg/&gt
+                </code></pre>
+                <svg viewBox="-6 -6 112 112" width="500"><path fill="hotpink"
+              stroke="black" stroke-width="1" d="M98.2,17.305c-2.493-6.252-7.495-11.51-14.416-14.766C77.667-0.34,71.076-0.686,65.085,1.073  C59.096,2.832,53.71,7.626,50,13.168C46.291,7.626,40.905,2.832,34.916,1.073S22.334-0.34,16.217,2.539  C9.297,5.794,4.295,11.053,1.801,17.305c-2.493,6.252-2.504,13.511,0.638,20.73C9.161,53.477,49.787,89.719,50,90.338  c0.213-0.619,40.84-36.861,47.561-52.303C100.705,30.815,100.693,23.557,98.2,17.305z"/> </svg>
+                </svg>
+                <br/>
+                <small class="fragment">*viewBox Rulzz!</small>
+            </section>
+
+            <section>
+                и още около 73 други
+            </section>
+
+            <section class="slide">
+                <h3>&lt;linearGradient&gt;</h3>
+                <pre><code>&lt;linearGradient
+    x1="0" x2="100%" y1="0" y2="100%" &gt
+    &lt;stop stop-color="hotpink" offset="0%"/&gt
+    &lt;stop stop-color="goldenrod" offset="100%"/&gt
+&lt;/linearGradient&gt
+                </code></pre>
+                <svg viewBox="0 0 100 100">
+                  <defs>
+                    <linearGradient id="linear" x1="0" x2="100%" y1="0" y2="100%">
+                      <stop stop-color="hotpink" offset="0%"/>
+                      <stop stop-color="goldenrod" offset="100%"/>
+                    </linearGradient>
+                  </defs>
+                  <rect x="0" y="0" width="100" height="100" fill="url(#linear)" style="width: 20px; height: 20px">
+                </svg>
+                    
+            </section>
+
+            <section class="slide">
+                <h3>Gradient fill</h3>
+                <pre><code>&lt;defs&gt;
+    &lt;linearGradient id="fire"&gt;
+      &lt;!-- ...gradient stops --&gt;
+    &lt;/linearGradient&gt;
+&lt;/defs&gt;
+</code></pre>
+
+                <pre><code>&lt;path fill="url(#fire)" d="M69.3,49.1c0.3,0.9,6.4-..."/&gt;
+                </code></pre>
+
+                <svg x="0px" y="0px" viewBox="0 10 100 100" enable-background="new 0 0 100 100" xml:space="preserve" height="500">
+                  <defs>
+                    <linearGradient id="fire" x1="0" x2="100%" y1="0" y2="100%">
+                      <stop stop-color="hotpink" offset="0%"/>
+                      <stop stop-color="goldenrod" offset="100%"/>
+                    </linearGradient>
+                  </defs>
+                  <path fill="url(#fire)" d="M69.3,49.1c0.3,0.9,6.4-1.1,8.8,5.9c2,6.1-2.1,8.9-1.7,9.7c0.5,1,10.8,3,11,9.5c0.2,9-12.2,11.1-15.2,11.1  c-17.5,0.2-27.7-2.7-36.6-2.5c-3.6,0.1-10,3-14.3,2.5c-3.7-0.5-9.6-3.5-8.6-11.2c1.5-11.8,10.9-9.3,11-10c0.1-1-3.4-2.4-2-8.6  c1.6-7.1,7.7-5.3,8.2-7.2c0.2-0.7-1.6-5.4-0.5-9.3c1.2-4.4,9-6.7,9.3-7.4c0.5-1-1.4-1.8-1.4-2.9c0.1-4.2,4.1-6,4.2-8.8  c0-1.4-1.1-3.4-0.4-4.5c1.5-2.2,13.6,5.6,16.7,9.2c4.7,5.6,3.7,8.2,2.9,12c0,0,7.2,0.8,9.1,4.3C71.8,44.5,69.1,48.4,69.3,49.1z   M37.3,43.3c-4.6,0-8.3,4.7-8.3,10.6s3.7,10.6,8.3,10.6s8.3-4.7,8.3-10.6S41.9,43.3,37.3,43.3z M61.5,43.3c-4.6,0-8.3,4.7-8.3,10.6  s3.7,10.6,8.3,10.6s8.3-4.7,8.3-10.6S66.1,43.3,61.5,43.3z M35.3,68.5c0,0,3.3,8.2,13.8,8.2c9.7,0,13.8-8.1,13.8-8.1L35.3,68.5z   M37.3,48.4c-2.3,0-4.1,2.6-4.1,5.8s1.8,5.8,4.1,5.8c2.3,0,4.1-2.6,4.1-5.8S39.6,48.4,37.3,48.4z M61.6,48.4c-2.3,0-4.1,2.6-4.1,5.8  s1.8,5.8,4.1,5.8c2.3,0,4.1-2.6,4.1-5.8S63.8,48.4,61.6,48.4z"/>
+              </svg>
+            </section>
+
+            <section class="slide">
+                <h3>Image fill / Pattern</h3>
+
+                <svg viewBox="0 0 100 100" width="500">
+                <defs>
+                  <pattern id="thor" width="100" height="100" patternUnits="userSpaceOnUse">
+                    <image xlink:href="img/thor.jpg" width="100" height="100" preserveAspectRatio="xMidYMid slice">
+                  </pattern>
+                </defs>
+                <path fill="url(#thor)"
+                  d="M98.2,17.305c-2.493-6.252-7.495-11.51-14.416-14.766C77.667-0.34,71.076-0.686,65.085,1.073  C59.096,2.832,53.71,7.626,50,13.168C46.291,7.626,40.905,2.832,34.916,1.073S22.334-0.34,16.217,2.539  C9.297,5.794,4.295,11.053,1.801,17.305c-2.493,6.252-2.504,13.511,0.638,20.73C9.161,53.477,49.787,89.719,50,90.338  c0.213-0.619,40.84-36.861,47.561-52.303C100.705,30.815,100.693,23.557,98.2,17.305z"/>
+              </svg>
+              </section>
+              <section>
+                <pre><code>&lt;defs&gt;
+  &lt;pattern id="thor" width="100" height="100"
+        patternUnits="userSpaceOnUse"&gt;
+
+    &lt;image xlink:href="img/thor.jpg" width="100" height="100"
+            preserveAspectRatio="xMidYMid slice"&gt;
+
+  &lt;/pattern&gt;
+&lt;/defs&gt;
+
+&lt;path fill="url(#thor)"
+  d="M98.2,17.305c..."/&gt;
+          </code></pre>
+            </section>
+
+            <section class="slide">
+                <h3>&lt;pattern&gt;</h3>
+                  <p>превръща всеки SVG елемент във fill</p>
+                  <p>най-забавно с &lt;image&gt;</p>
+            </section>
+
+            <section class="slide">
+                <h3>Or GIF???</h3>
+
+                <svg width="600" height="486.24px"
+                 viewBox="-99.979 -162.047 300 486.24" fill="url(#geordi)">
+                <defs>
+                  <pattern id="geordi" patternUnits="userSpaceOnUse" width="800" height="600" x="-180" y="-162">
+                      <image xlink:href="img/yeahgeordii.gif" x="0" y="0" width="400" height="500" preserveAspectRatio="xMidyMid slice"/>
+                  </pattern>
+                </defs>
+                <path  d="M53.531-149
+                C-49.869-1.886-87.109,139.671-92.709,305.44C-58.591,272.187,50.02,139.858,88.765,132.167
+                c25.854-5.135,48.595,26.062,102.307,128.312C178.008,116.698,118.265-54.826,53.531-149L53.531-149z"/>
+              </svg>
+              </section>
+
+            <section class="inter">
+              <style>
+                .space-text {
+                  font-family: "Syncopate";
+                  text-transform: uppercase;
+                }
+              </style>
+              <svg viewBox="0 0 200 90" class="space-text">
+                <defs>
+                  <pattern id="space" patternUnits="userSpaceOnUse" width="200" height="90">
+                    <image xlink:href="img/space.gif" width="200" height="90" preserveAspectRatio="xMidYMid slice"/>
+                  </pattern>
+                </defs>
+
+                <text fill="url(#space)" class="line1" x="0" y="33" font-size="46">space</text>
+                <text fill="url(#space)" class="line2" x="0" y="60" font-size="28.5">the final</text>
+                <text fill="url(#space)" class="line3" x="0" y="85" font-size="29.5">frontier</text>
+              </svg>
+            </section>
+
+
+            <section>
+                <pre><code>&lt;svg viewBox="0 0 200 90"&gt;
+    &lt;defs&gt;
+        &lt;pattern id="space" patternUnits="userSpaceOnUse" width="200" height="90"&gt;
+          &lt;image xlink:href="img/space.gif" width="200" height="90" preserveAspectRatio="xMidYMid slice"/&gt;
+        &lt;/pattern&gt;
+    &lt;/defs&gt;
+
+    &lt;text fill="url(#space)" x="0" y="33" 
+        font-size="46"&gt;space&lt;/text&gt;
+    &lt;text fill="url(#space)" x="0" y="60"
+        font-size="28.5"&gt;the final&lt;/text&gt;
+    &lt;text fill="url(#space)" x="0" y="85"
+        font-size="29.5"&gt;frontier&lt;/text&gt;
+&lt;/svg&gt;
+          </code></pre>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="third_party/reveal/lib/js/head.min.js"></script>
+    <script src="third_party/reveal/js/reveal.js"></script>
+    <script src="js/demo.js"></script>
+
+    <script>
+        Reveal.initialize({
+        	width: 1920,
+            height: 1080,
+
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+
+            theme: 'simple', // available themes are in /css/theme
+            transition: 'none', // default/cube/page/concave/zoom/linear/fade/none
+
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: 'third_party/reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                //{ src: 'third_party/reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                //{ src: 'third_party/reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: 'third_party/highlight-new/highlight.pack.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                //{ src: 'third_party/reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                //{ src: 'third_party/reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+            ]
+        });
+
+        Reveal.addEventListener('slidechanged', function (event) {
+            WebGLDemo.onNewSlide(event.currentSlide.children);
+        }, false);
+
+        Reveal.addEventListener('ready', function (event) {
+            WebGLDemo.onNewSlide(event.currentSlide.children);
+        }, false);
+
+        Reveal.addEventListener('fragmentshown', function (event) {
+            WebGLDemo.onNewFragment(event.fragment);
+        }, false);
+
+        Reveal.addEventListener('fragmenthidden', function (event) {
+            WebGLDemo.onFragmentHidden(event.fragment);
+        }, false);
+    </script>
+
+</body>
+</html>
